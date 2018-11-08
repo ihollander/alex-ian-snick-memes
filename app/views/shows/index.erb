@@ -1,0 +1,14 @@
+<h1>Shows</h1>
+
+<% @shows.each do |show| %>
+  <h2><%= "#{show.name} first aired #{show.age} years ago." %></h2>
+  <% if show.memes.any? %>
+    <% show.memes.each do |meme| %>
+      <%= image_tag(meme.image_link, class: "meme") if meme.image_link %>
+      <em><%= "Uploaded by #{meme.nineties_kid.name}" %></em> 
+    <% end %>
+  <% else %>
+    <%= "No memes uploaded. SAD FACE." %>
+  <% end %>
+  <hr>
+<% end %>

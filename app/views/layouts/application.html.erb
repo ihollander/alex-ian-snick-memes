@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snick</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      .meme {
+        width: 400px;
+      }
+
+      .memer-link {
+        display: inline-block;
+        width: 200px;
+        -webkit-transition: transform 1s;
+        transition: transform 1s;
+      }
+
+      .memer-link:hover {
+        color: red;
+        font-size: 1.5em;
+        transform: rotate(360deg)
+      }
+
+      .memer-link:hover::after {
+        content: " YEAH! Go for it.";
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to '90s Kids', nineties_kids_path %>
+      <%= link_to 'New Kid', new_nineties_kid_path %>
+      <%= link_to 'Shows', shows_path %>
+      <%= link_to 'New Show', new_show_path %>
+    </nav>
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<h1><%= @kid.name %></h1>
+<h2>Age: <%= @kid.age %></h2>
+
+<hr>
+<%= link_to 'Upload a memer', new_nineties_kid_meme_path(@kid), class: "memer-link" %> | 
+<%= link_to 'Search a giphy', nineties_kid_new_meme_from_giphy_path(@kid), class: "memer-link" %>
+<hr>
+<% @kid.memes.each do |meme| %>
+  <%= image_tag(meme.image_link, class: "meme") if meme.image_link %>
+<% end %>

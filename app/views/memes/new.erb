@@ -1,0 +1,13 @@
+<h3>Add a meme</h3>
+<%= form_for @meme do |f| %>
+  <%= f.hidden_field :nineties_kid_id %>
+  <div>
+    <%= f.label :show_id, "Show" %>
+    <%= f.collection_select(:show_id, @shows, :id, :name) %>
+  </div>
+  <div>
+    <%= f.label :image, "Upload a MEME" %>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit %>
+<% end %>

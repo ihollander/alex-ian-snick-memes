@@ -1,0 +1,8 @@
+<h1>Nineties Kids are BEST</h1>
+
+<% @kids.each do |kid| %>
+  <h2><%= link_to "#{kid.name} is #{kid.age}", kid %></h2>
+  <p>Here's a random meme they looove:</p>
+  <%= image_tag(kid.yourl, class: "meme") if kid.yourl %>
+  <hr>
+<% end %>

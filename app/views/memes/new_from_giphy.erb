@@ -1,0 +1,18 @@
+<h3>Search for GIFFFFS</h3>
+<%= form_tag search_giphy_path do %>
+  <%= hidden_field_tag :id, @kid.id %>
+  <%= label_tag :search %>
+  <%= collection_select(:search, :search, @shows, :name, :name)%>
+  <%= label_tag :limit, "How many u want?" %>
+  <%= collection_select(:search, :limit, [5,10,15,20], :to_i, :to_i)%>
+  <%= submit_tag "Search Giphy" %>
+<% end %>
+
+<hr>
+<% if flash[:meme_hashes] %>
+  <% flash[:meme_hashes].each do |meme_hash| %>
+    <% new_meme = Meme.new(giphy_link: meme_hash["giphy_link"], nineties_kid_id: @kid.id, show_id: meme_hash["show_id"]) %>
+    <%= image_tag meme_hash["giphy_link"] if meme_hash["giphy_link"] %>
+    <%= render partial: 'hidden_form', locals: { meme: new_meme } %>
+  <% end %>
+<% end %>

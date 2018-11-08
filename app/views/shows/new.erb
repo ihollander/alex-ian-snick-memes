@@ -1,0 +1,20 @@
+<h1>Add a show!</h1>
+<h3>Search OMDb for a show title.</h3>
+<%= form_tag search_shows_path do %>
+  <%= label_tag :search %>
+  <%= text_field_tag :search %>
+  <%= submit_tag %>
+<% end %>
+
+<hr>
+<% if flash[:api_result] %>
+  <ul>
+    <% flash[:api_result].each do |show_hash| %>
+      <% show = Show.new_from_api(show_hash) %>
+      <li>
+        <%= "#{show.name} (#{show.year_created})" %>
+        <%= render partial: 'hidden_form', locals: { show: show } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
